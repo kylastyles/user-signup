@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<h4>Please Sign In</h4>
+<form action="/welcome" method="post">
+    <p><label for="username">Username: </label>
+    <input id="username" type="text" required /></p>
+    <p>{{username_error}}</p>
+    <p><label for="password1">Password: </label>
+    <input id="password1" type="password" required /></p>
+    <p>{{password1_error}}</p>
+    <p><label for="password2">Re-enter Password: </label>
+    <input id="password2" type="password" required /></p>
+    <p>{{password2_error}}</p>
+    <p><label for="email">Email (optional): </label>
+    <input id="email" type="text" /></p>
+    <P>{{email_error}}</P>
+    <p><input type="submit" value="Submit" /></p>
+
+
+</form>
+
+{% endblock %}
