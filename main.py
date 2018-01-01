@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template, redirect, url_for
 import cgi
 
 app = Flask(__name__)
@@ -52,16 +52,16 @@ def validate():
         email_error = ""
 
     if not username_error and not password1_error and not password2_error and not email_error:
-        return render_template("welcome.html", username = username)
+        return redirect(url_for("welcome", username=username))
     else:
         return render_template("index.html", username = username, username_error = username_error, password1_error = password1_error, password2_error = password2_error, email = email, email_error = email_error)
 
 
 
 
-@app.route("/welcome", methods=["GET", "POST"])
+@app.route("/welcome")
 def welcome():
-    username = request.form["username"]
+    username = request.args.get("username")
     return render_template("welcome.html", username = username)
 
 
